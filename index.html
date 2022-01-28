@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulled</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="img-column">
+      <div class="site-name">
+        <img src="./img/tamper.png" alt="pulled logo">
+        <h1>pulled</h1>
+      </div>
+      <div class="background-caption">
+        <span>
+          Photo by <a href="https://unsplash.com/@nate_dumlao">Nathan Dumalo</a> on <a href="https://unsplash.com/">Unsplash</a>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-column">
+      <form action="/signup" method="post">
+
+        <div class="prompt">
+          <p>
+            Analyse each pull and improve your skills as a barista.
+            Keep track of your espresso shots, coffee beans, recipes, and more with <strong>pulled</strong>.
+          </p>
+          <p>Sign up <em>now</em> to get started. You know you want to.</p>
+        </div>
+
+        <div class="form-wrapper">
+          <h2>Let's do this!</h2>
+
+          <fieldset>
+            <div>
+              <label for="firstname">FIRST NAME</label>
+              <input type="text" id="firstname" name="firstname" placeholder="Coffee" autofocus="true" class="focus" required>
+            </div>
+            
+            <div>
+              <label for="lastname">LAST NAME</label>
+              <input type="text" id="lastname" name="lastname" placeholder="Addict" required>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div>
+              <label for="email">EMAIL</label>
+              <input type="email" id="email" name="email" placeholder="coffee@addict.com" required>
+            </div>
+            
+            <div>
+              <label for="phone">PHONE NUMBER</label>
+              <input type="tel" id="phone" name="phone" placeholder="123-456-7890" required>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div>
+              <label for="password">PASSWORD</label>
+              <input type="password" id="password" name="password" minlength="6" class="error" required>
+            </div>
+            
+            <div>
+              <label for="password-confirm">CONFIRM PASSWORD</label>
+              <input type="password" id="password-confirm" name="password-confirm" minlength="6" class="error" required>
+            </div>
+          </fieldset>
+          <span class="error-msg">* Passwords do not match</span>
+        </div>
+
+        <div class="links">
+          <button type="submit">Create Account</button>
+          <span>Already have an account? <a href="">Log in</a></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
