@@ -14,11 +14,11 @@
     const errorField = input.nextElementSibling;
   
     if (input.validity.valueMissing) {
-      errorField.textContent = `You need to enter your ${title}.`;
+      errorField.textContent = `You must enter your ${title}.`;
     } else if (input.validity.patternMismatch) {
       errorField.textContent = 'Entered value contains invalid characters.';
     } else if (input.validity.typeMismatch) {
-      errorField.textContent = `Entered value needs to be a proper ${title}.`;
+      errorField.textContent = `Entered value must be a valid ${title}.`;
     }
 
     input.classList.add('error');
@@ -35,11 +35,39 @@
     }
   });
 
+  lastname.addEventListener('input', () => {
+    if (lastname.validity.valid) {
+      lastname.nextElementSibling.textContent = '';
+      lastname.classList.remove('error');
+    } else {
+      showError(lastname, 'last name');
+    }
+  });
+
+  email.addEventListener('input', () => {
+    if (email.validity.valid) {
+      email.nextElementSibling.textContent = '';
+      email.classList.remove('error');
+    } else {
+      showError(email, 'email');
+    }
+  });
+
   // Validate form submit
 
   form.addEventListener('submit', (e) => {  
     if (!firstname.validity.valid) {
       showError(firstname, 'first name');
+      e.preventDefault();
+    }
+
+    if (!lastname.validity.valid) {
+      showError(lastname, 'last name');
+      e.preventDefault();
+    }
+
+    if (!email.validity.valid) {
+      showError(email, 'email');
       e.preventDefault();
     }
   });

@@ -115,7 +115,7 @@ fieldset div {
 }
 
 form label {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-size: 0.9rem;
   font-weight: 900;
   margin-bottom: 0.25rem;
