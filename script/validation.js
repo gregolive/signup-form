@@ -10,13 +10,13 @@
 
   // Show errors
   
-  const showError = (input, title) => {
+  const showError = (input, title, validChars = '') => {
     const errorField = input.nextElementSibling;
   
     if (input.validity.valueMissing) {
       errorField.textContent = `You must enter your ${title}.`;
     } else if (input.validity.patternMismatch) {
-      errorField.textContent = 'Entered value contains invalid characters.';
+      errorField.textContent = `Entered value can only contain ${validChars}.`;
     } else if (input.validity.typeMismatch) {
       errorField.textContent = `Entered value must be a valid ${title}.`;
     }
@@ -31,7 +31,7 @@
       firstname.nextElementSibling.textContent = '';
       firstname.classList.remove('error');
     } else {
-      showError(firstname, 'first name');
+      showError(firstname, 'first name', 'letters');
     }
   });
 
@@ -40,7 +40,7 @@
       lastname.nextElementSibling.textContent = '';
       lastname.classList.remove('error');
     } else {
-      showError(lastname, 'last name');
+      showError(lastname, 'last name', 'letters');
     }
   });
 
@@ -53,21 +53,35 @@
     }
   });
 
+  phone.addEventListener('input', () => {
+    if (phone.validity.valid) {
+      phone.nextElementSibling.textContent = '';
+      phone.classList.remove('error');
+    } else {
+      showError(phone, 'phone number', 'numbers and dashes');
+    }
+  });
+
   // Validate form submit
 
   form.addEventListener('submit', (e) => {  
     if (!firstname.validity.valid) {
-      showError(firstname, 'first name');
+      showError(firstname, 'first name', 'letters');
       e.preventDefault();
     }
 
     if (!lastname.validity.valid) {
-      showError(lastname, 'last name');
+      showError(lastname, 'last name', 'letters');
       e.preventDefault();
     }
 
     if (!email.validity.valid) {
       showError(email, 'email');
+      e.preventDefault();
+    }
+
+    if (!phone.validity.valid) {
+      showError(phone, 'phone number', 'numbers and dashes');
       e.preventDefault();
     }
   });
