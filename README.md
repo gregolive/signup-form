@@ -1,5 +1,11 @@
 # Signup Form
 
-Building a signup page for <strong>pulled</strong> (a fake website that helps users track their espresso shots). Built to practice building forms in CSS and to gain expereince with CSS Grid.
+Building a signup page for <strong>pulled</strong> (a fake website that helps users track their espresso shots). 
 
 [Live demo](https://gregolive.github.io/signup-form/) 👈
+
+**Built to practice:**
+
+- Building forms in CSS
+- CSS Grid
+- Javascript form validation via the Constraint validation API
