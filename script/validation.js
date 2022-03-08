@@ -16,12 +16,17 @@
     if (input.validity.valueMissing) {
       errorField.textContent = `You must enter your ${title}.`;
     } else if (input.validity.patternMismatch) {
-      errorField.textContent = `Entered value can only contain ${validChars}.`;
+      errorField.textContent = `Entered value must contain ${validChars}.`;
     } else if (input.validity.typeMismatch) {
       errorField.textContent = `Entered value must be a valid ${title}.`;
     }
 
     input.classList.add('error');
+  }
+
+  const passwordError = () => {
+    passwordConfirm.nextElementSibling.textContent = 'Passwords do not match.';
+    passwordConfirm.classList.add('error');
   }
 
   // Monitor inputs
@@ -31,7 +36,7 @@
       firstname.nextElementSibling.textContent = '';
       firstname.classList.remove('error');
     } else {
-      showError(firstname, 'first name', 'letters');
+      showError(firstname, 'first name', 'letters only');
     }
   });
 
@@ -40,7 +45,7 @@
       lastname.nextElementSibling.textContent = '';
       lastname.classList.remove('error');
     } else {
-      showError(lastname, 'last name', 'letters');
+      showError(lastname, 'last name', 'letters only');
     }
   });
 
@@ -58,7 +63,25 @@
       phone.nextElementSibling.textContent = '';
       phone.classList.remove('error');
     } else {
-      showError(phone, 'phone number', 'numbers and dashes');
+      showError(phone, 'phone number', 'numbers and dashes only');
+    }
+  });
+
+  password.addEventListener('input', () => {
+    if (password.validity.valid) {
+      password.nextElementSibling.textContent = '';
+      password.classList.remove('error');
+    } else {
+      showError(password, 'password', 'one number, one uppercase and lowercase letter, and 8 or more characters');
+    }
+  });
+
+  passwordConfirm.addEventListener('input', () => {
+    if (passwordConfirm.value === password.value ) {
+      passwordConfirm.nextElementSibling.textContent = '';
+      passwordConfirm.classList.remove('error');
+    } else {
+      passwordError();
     }
   });
 
@@ -66,12 +89,12 @@
 
   form.addEventListener('submit', (e) => {  
     if (!firstname.validity.valid) {
-      showError(firstname, 'first name', 'letters');
+      showError(firstname, 'first name', 'letters only');
       e.preventDefault();
     }
 
     if (!lastname.validity.valid) {
-      showError(lastname, 'last name', 'letters');
+      showError(lastname, 'last name', 'letters only');
       e.preventDefault();
     }
 
@@ -81,7 +104,22 @@
     }
 
     if (!phone.validity.valid) {
-      showError(phone, 'phone number', 'numbers and dashes');
+      showError(phone, 'phone number', 'numbers and dashes only');
+      e.preventDefault();
+    }
+
+    if (!password.validity.valid) {
+      showError(password, 'password', 'one number, one uppercase and lowercase letter, and 8 or more characters');
+      e.preventDefault();
+    }
+
+    if (!password.validity.valid) {
+      showError(password, 'password', 'one number, one uppercase and lowercase letter, and 8 or more characters');
+      e.preventDefault();
+    }
+
+    if (passwordConfirm.value !== password.value) {
+      passwordError();
       e.preventDefault();
     }
   });

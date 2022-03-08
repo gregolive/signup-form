@@ -69,13 +69,13 @@
           <fieldset>
             <div>
               <label for="password">PASSWORD</label>
-              <input type="password" id="password" name="password" minlength="6" required>
+              <input type="password" id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
               <span class="error-msg"></span>
             </div>
             
             <div>
               <label for="password-confirm">CONFIRM PASSWORD</label>
-              <input type="password" id="password-confirm" name="password-confirm" minlength="6" required>
+              <input type="password" id="password-confirm" name="password-confirm" required>
               <span class="error-msg"></span>
             </div>
           </fieldset>
