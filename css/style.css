@@ -5,6 +5,7 @@
   --secondary-color: #EA4D3B;
   --light-color: #FEF6EC;
   --error-color: #d00000;
+  --error-bg-color: #FFD6D6;
   --primary-font: 'Open Sans', sans-serif;
   --logo-font: 'Cabin', sans-serif;
 }
@@ -136,6 +137,7 @@ form .focus {
 
 form .error {
   border: 1px solid var(--error-color);
+  background-color: var(--error-bg-color);
   border-radius: 3px;
 }
 
